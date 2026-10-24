@@ -8,7 +8,7 @@ headers = {
 }
 
 
-def fetch_website_contents(url):
+def fetch_website_contents(url, text_limit=4_000):
     """
     Return the title and contents of the website at the given url;
     truncate to 2,000 characters as a sensible limit
@@ -22,7 +22,7 @@ def fetch_website_contents(url):
         text = soup.body.get_text(separator="\n", strip=True)
     else:
         text = ""
-    return (title + "\n\n" + text)[:2_000]
+    return (title + "\n\n" + text)[:text_limit]
 
 
 def fetch_website_links(url):
